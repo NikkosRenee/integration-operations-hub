@@ -1,0 +1,1 @@
+{"name":"Integration Operations Hub","short_name":"Integration Ops","description":"Private command center for clients, projects, and integration work.","start_url":"/","display":"standalone","background_color":"#f6f7fa","theme_color":"#11192c","icons":[{"src":"/app-icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]}
