@@ -4,6 +4,7 @@ set -euo pipefail
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 if [[ "${SITES_ENV_READY:-}" != "1" ]]; then
+  # CI/source archives may not preserve executable bits, so re-enter through bash.
   exec bash "${script_dir}/sites-env.sh" -- bash "$0" "$@"
 fi
 
