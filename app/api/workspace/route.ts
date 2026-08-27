@@ -1,5 +1,6 @@
 import { asc, desc, eq } from "drizzle-orm";
 import { getDb } from "../../../db";
+import { seedPvLabelsMigrationPlan } from "../../../db/pvlabels-migration-plan";
 import { activities, clients, projects, tasks } from "../../../db/schema";
 
 const now = () => new Date().toISOString();
@@ -12,6 +13,7 @@ async function logActivity(db: Awaited<ReturnType<typeof getDb>>, action:string,
 export async function GET() {
   try {
     const db = await getDb();
+    await seedPvLabelsMigrationPlan(db);
     const [clientRows, projectRows, taskRows, activityRows] = await Promise.all([
       db.select().from(clients).orderBy(asc(clients.name)),
       db.select().from(projects).orderBy(desc(projects.createdAt)),
